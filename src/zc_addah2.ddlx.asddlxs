@@ -26,11 +26,12 @@ annotate entity ZC_ADDAH2 with
     label: 'Position' ,
     targetElement: '_position' }  ] 
     
-    
+  @UI.selectionField: [{ position: 10  }] 
   @UI: { lineItem: [{ position: 10, label: 'order' }],
     identification: [{ position: 10 , label: 'Order' } ] }
   //   @UI.hidden: true
   OrderNo;
+   @UI.selectionField: [{ position: 20  }] 
   @UI: { lineItem: [{ position: 20, label: 'Order type' }]  ,
   identification: [{ position: 20 , label: 'Order type' }]}
   OrderType;
