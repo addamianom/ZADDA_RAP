@@ -1,0 +1,92 @@
+managed with unmanaged save
+with full data
+implementation in class zbp_i_addah2 unique;
+
+strict ( 2 );
+with draft;
+define behavior for ZI_ADDAH2 alias header
+
+draft table zaddah2dr
+lock master unmanaged
+
+//persistent table zaddah1
+total etag LocalChangeddatetime
+authorization master ( global )
+late numbering
+etag master LastChangedat
+
+{
+  create;
+  update;
+  delete;
+
+  draft action Edit with additional implementation;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+
+
+  draft determine action Prepare
+  {
+      validation zi_addap2~val_position;
+  }
+
+
+  field ( readonly ) OrderNo;
+ association _position { create; with draft; }
+
+   mapping for zaddah1
+    {
+      orderNo             = Order_no ;
+      OrderType            = order_type;
+      Customer            = customer;
+      GrossAmt             = gross_amt;
+      CurrencyUnit         = currency_unit;
+      CreateBy             = create_by;
+      CreatedDateTime      = created_datetime;
+      localchangeddatetime = local_changeddatetime;
+      locallastchangedby   = local_lastchangedby;
+      LastChangedBy        = last_changedby;
+      LastChangedAt        = last_changedat;
+    }
+
+}
+
+
+define behavior for ZI_ADDAP2 alias position
+//persistent table zaddap1
+draft table zaddap2dr
+lock dependent by _Header
+authorization dependent by _Header
+etag master LastChangedat
+late numbering
+
+{
+  update;
+  delete;
+  field ( readonly ) OrderNo, ItemNo;
+  association _Header { with draft; }
+
+
+validation val_position on save {  create; update;}
+ determination detposition on modify{ create;  }
+
+   mapping for zaddap1
+    {
+
+      OrderNo             = order_no;
+      ItemNo               = item_no;
+      TempitemNo           = tempitem_no;
+      Product              = product;
+      NetAmount            = net_amount;
+      CurrencyUnit         = currency_unit;
+      CreateBy             = create_by;
+      CreatedDateTime      = created_datetime;
+      localchangeddatetime = local_changeddatetime;
+      locallastchangedby   = local_lastchangedby;
+      LastChangedBy        = last_changedby;
+      LastChangedAt        = last_changedat;
+    }
+
+
+}

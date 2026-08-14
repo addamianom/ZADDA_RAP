@@ -1,0 +1,64 @@
+@Metadata.layer: #CORE
+@UI: { headerInfo:{ typeName: 'Position' ,
+                  typeNamePlural: 'Positions',
+                   title: { type: #STANDARD, label: 'Position', value: 'ItemNo'} ,
+                   
+                    description: { value: 'ItemNo' } },
+                   
+                   presentationVariant: [{ sortOrder: [{ by: 'OrderNo',direction: #DESC }] ,
+                                          visualizations: [{ type: #AS_LINEITEM  }]
+                    }]
+                   
+                      }
+
+annotate entity ZC_ADDAP2 with
+
+{
+  @UI.facet: [
+     { id: 'Position' ,
+     purpose: #STANDARD,
+     type: #IDENTIFICATION_REFERENCE,
+     position: 10,
+     label: 'Position' } ]
+
+
+  @UI: { lineItem: [{ position: 10, label: 'Order' }]  ,
+   identification: [{ position: 10 , label: 'Order' }]}
+  OrderNo;
+  @UI: { lineItem: [{ position: 20, label: 'position' }]  ,
+  identification: [{ position: 20 , label: 'position' }]}
+  ItemNo;
+  @UI: { lineItem: [{ position: 30, label: 'Product' }]  ,
+  identification: [{ position: 30 , label: 'Product' }]}
+
+
+  Product;
+  @UI: { lineItem: [{ position: 50, label: 'amount' }]  ,
+  identification: [{ position: 50 , label: 'amount' }]}
+
+  netamount;
+  @UI: { lineItem: [{ position: 60, label: 'Valuta' }]  ,
+  identification: [{ position: 60 , label: 'Valuta' }]}
+  @UI.hidden: true
+  currencyunit;
+     @UI: { lineItem: [{ position: 65, label: 'CreateBy' }]  ,
+  identification: [{ position: 65 , label: 'createBY' }]}
+  CreateBy;
+   @UI: { lineItem: [{ position: 70, label: 'CreatedDatetime' }]  ,
+  identification: [{ position: 70 , label: 'CreatedDatetime' }]}
+  CreatedDatetime;
+   @UI: { lineItem: [{ position: 80, label: 'LocalChangeddatetime' }]  ,
+  identification: [{ position: 80 , label: 'LocalChangeddatetime' }]}
+  LocalChangeddatetime;
+   @UI: { lineItem: [{ position: 90, label: 'LocalLastchangedby' }]  ,
+  identification: [{ position: 90 , label: 'LocalLastchangedby' }]}
+  LocalLastchangedby;
+   @UI: { lineItem: [{ position: 100, label: 'LastChangedby' }]  ,
+  identification: [{ position: 100 , label: 'LastChangedby' }]}
+  LastChangedby;
+   @UI: { lineItem: [{ position: 110, label: 'LastChangedat' }]  ,
+  identification: [{ position: 110 , label: 'LastChangedat' }]}
+  LastChangedat;
+
+
+}

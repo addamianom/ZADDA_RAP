@@ -1,0 +1,5 @@
+@EndUserText.label: 'Services definition'
+define service ZSD_ADDAH2 {
+  expose ZC_ADDAH2 as header;
+  expose ZC_ADDAP2 as position;
+}
